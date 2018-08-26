@@ -8,4 +8,18 @@ var fn = function(){
     minus[i].appendChild(e);
   }
 };
+
 document.addEventListener('DOMContentLoaded', fn, false)
+
+var fn1 = function(){
+  var plus = document.getElementsByClassName('plus');
+  console.log(plus);
+
+  for(var i =0; i < plus.length; i++){
+    var e1 = document.createElement('p');
+    e1.innerHTML = '+';
+    plus[i].appendChild(e1);
+  }
+};
+
+document.addEventListener('DOMContentLoaded', fn1, false)

@@ -26,11 +26,11 @@
   color: darkgoldenrod;
 }
 
-.button.round.filled {
+.button.round.solid {
   background-color: gold;
 }
 
-.button.round.filled p {
+.button.round.solid p {
   color: #4C4F53;
 }
 
@@ -42,13 +42,18 @@
   font-size: 31px;
 }
 
-.button.square {
-  height: 45px;
-  width: 250px;
-  border-radius: 20px;
+.button.container {
+  display: flex;
+  justify-content: center;
 }
 
-.button.square p {
+.button.oval {
+  height: 45px;
+  width: 250px;
+  border-radius: 50px;
+}
+
+.button.oval p {
   vertical-align: middle;
   margin: auto;
   text-align: center;
@@ -60,45 +65,45 @@
   padding: 15px;
 }
 
-.button.square.white {
+.button.oval.white {
   background-color: white;
 }
 
-.button.square.white p {
+.button.oval.white p {
   color: #BCBFC7;
 }
 
-.button.square.gold {
+.button.oval.gold {
   background-color: gold;
 }
 
-.button.square.goldlight {
+.button.oval.goldlight {
   background-color: #F0D77C;
 }
 
-.button.square.golddark {
+.button.oval.golddark {
   background-color: darkgoldenrod;
 }
 
-.button.square.grey {
+.button.oval.grey {
   background-color: #4C4F53;
   border: 3px solid gold;
 }
 
-.button.square.grey p {
+.button.oval.grey p {
   color: gold;
 }
 
-.button.square.silver {
+.button.oval.silver {
   background-color: #8C8155;
   border: 3px solid gold;
 }
 
-.button.square.silver p {
+.button.oval.silver p {
   color: gold;
 }
 
-.button.square i {
+.button.oval i {
   color: #4C4F53;
   font-weight: 900;
   margin: auto 100px;
@@ -109,7 +114,7 @@
   padding: 15px;
 }
 
-.button.square i.goldcheck {
+.button.oval i.goldcheck {
   color: gold;
 }
 li {

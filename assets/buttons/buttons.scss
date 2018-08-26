@@ -21,7 +21,7 @@
 	  		color: darkgoldenrod;
 	  	}
 	  }
-	  &.filled{
+	  &.solid{
 		  background-color: gold;
 		  p{
 			color: #4C4F53;
@@ -34,11 +34,15 @@
     	color: gold;
     	font-size: 31px;
     }
-	  }
-	&.square {
+  }
+  &.container{
+    display: flex;
+    justify-content: center;
+  }
+	&.oval{
     height: 45px;
     width: 250px;
-    border-radius: 20px;
+    border-radius: 50px;
 		p{
 			vertical-align: middle;
 			margin: auto;
@@ -88,9 +92,4 @@
 			}
 		}
 	}
-
-
-
-
-
 }

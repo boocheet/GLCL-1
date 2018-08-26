@@ -1,13 +1,65 @@
+<!DOCTYPE html>
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="./dist/css/styles.css">
     <script type="text/javascript" src="./dist/scripts/scripts.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
   </head>
-  <body>
-    <h2>Buttons</h2>
-    <h3>Square Buttons</h3>
-    <div class="button"></div>
-    <h3>Round Buttons</h3>
-    <div class="button round"></div>
+  <body style="background-color: #494D51">
+    <div class="row">
+      <div class="button round">
+        <p>+</p>
+      </div>
+      <div class="button round minus"></div>
+    </div>
+    <div class="">
+      <div class="button round disabled plus">
+        <!-- <p>+</p> -->
+      </div>
+      <div class="button round disabled minus"></div>
+    </div>
+    <div class="row">
+      <div class="button round solid plus">
+        <!-- <p>+</p> -->
+      </div>
+      <div class="button round solid minus"></div>
+    </div>
+    <div class="row">
+      <div class="button oval white">
+        <p>INACTIVE</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="button oval gold">
+        <p>NORMAL</p>
+      </div>
+      <div class="button oval goldlight">
+        <p>HOVER[web only]</p>
+      </div>
+      <div class="button oval golddark">
+        <p>CLICK/TAP</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="button oval gold check"><i class="fas fa-check"></i></div>
+      <div class="button oval goldlight check"><i class="fas fa-check"></i></div>
+      <div class="button oval golddark check"><i class="fas fa-check"></i></div>
+    </div>
+    <div class="container">
+      <div class="button oval grey">
+        <p>NORMAL</p>
+      </div>
+      <div class="button oval silver">
+        <p>HOVER[web only]</p>
+      </div>
+      <div class="button oval gold">
+        <p>CLICK/TAP</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="button oval grey"><i class="fas fa-check goldcheck"></i></div>
+      <div class="button oval silver"><i class="fas fa-check goldcheck"></i></div>
+      <div class="button oval gold"><i class="fas fa-check"></i></div>
+    </div>
   </body>
 </html>
