@@ -1,5 +1,5 @@
-var fn = function(){
-  var minus = document.getElementsByClassName('minus');
+let fn = ()=>{
+  let minus = document.getElementsByClassName('minus');
   console.log(minus);
 
   for(var i =0; i < minus.length; i++){
@@ -11,8 +11,8 @@ var fn = function(){
 
 document.addEventListener('DOMContentLoaded', fn, false)
 
-var fn1 = function(){
-  var plus = document.getElementsByClassName('plus');
+let fn1 = ()=>{
+  let plus = document.getElementsByClassName('plus');
   console.log(plus);
 
   for(var i =0; i < plus.length; i++){

@@ -11,14 +11,14 @@ let tracker = () => {
 	});
   let min5Dec = document.getElementById('5-min')
 	min5Dec.addEventListener('click', ()=>{
-    if (totalTime > 0){
+    if (totalTime > 0 && (totalTime - 5) > 0)){
         totalTime -= 5;
         counter.innerHTML = totalTime;
       }
   });
   let min15Dec = document.getElementById('15-min')
 	min15Dec.addEventListener('click', ()=>{
-    if (totalTime > 0){
+    if (totalTime > 0 && ((totalTime - 15) > 0)){
 		    totalTime -= 15;
 		    counter.innerHTML = totalTime;
       }
