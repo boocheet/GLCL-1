@@ -1,0 +1,35 @@
+
+@import '../main';
+
+.calendar-header{
+  display: flex;
+  width: 250px;
+  background-color: $tertiary;
+  justify-content: space-around;
+  color: $white;
+}
+
+.arrow{
+  cursor:pointer;
+}
+// .calendarHeader {
+//   background-color: $tertiary;
+//   color: $white;
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: row;
+//   box-sizing: border-box;
+//   width: 400px;
+//   height: 66px;
+//   // padding: 4px;
+//   border: solid #6F7275;
+//   margin-right: auto;
+//   margin-left: auto;
+//   font-size: 24;
+//
+//   i {
+//     padding: 20px;
+//     margin: 9px;
+//
+//   }
+// }
