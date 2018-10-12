@@ -1,22 +1,22 @@
 'use strict';
 
 var fn = function fn() {
-	// adding p tag for minus
-	var minus = document.getElementsByClassName('minus');
+  // adding p tag for minus
+  var minus = document.getElementsByClassName('minus');
 
-	for (var i = 0; i < minus.length; i++) {
-		var e = document.createElement('p');
-		e.innerHTML = '-';
-		minus[i].appendChild(e);
-	}
+  for (var i = 0; i < minus.length; i++) {
+    var e = document.createElement('p');
+    e.innerHTML = '-';
+    minus[i].appendChild(e);
+  }
 
-	//adding p tag for plus
-	var plus = document.getElementsByClassName('plus');
-	for (var i = 0; i < plus.length; i++) {
-		var e = document.createElement('p');
-		e.innerHTML = '+';
-		plus[i].appendChild(e);
-	}
+  //adding p tag for plus
+  var plus = document.getElementsByClassName('plus');
+  for (var i = 0; i < plus.length; i++) {
+    var e = document.createElement('p');
+    e.innerHTML = '+';
+    plus[i].appendChild(e);
+  }
 };
 
 document.addEventListener('DOMContentLoaded', fn, false);
@@ -82,10 +82,11 @@ var calendar = function calendar() {
   // let titleIndex = Number(titleCarousel.getAttribute('title-starting-index'));
 
   var calendarBody = document.getElementById('calendar-body');
-  var populateCalendarBody = function populateCalendarBody() {
-    var currentDaysInMonth = lastDay(2018, 9);
-    var firstDayOfMonth = firstDay(2018, 9);
-    var lastMonthArr = lastMonth(currentYear, currentMonth, firstDayOfMonth);
+  var populateCalendarBody = function populateCalendarBody(selectedYear, selectedMonth) {
+    calendarBody.innerHTML = "";
+    var currentDaysInMonth = lastDay(selectedYear, selectedMonth);
+    var firstDayOfMonth = firstDay(selectedYear, selectedMonth);
+    var lastMonthArr = lastMonth(selectedYear, selectedMonth, firstDayOfMonth);
     var daysInRow = 7;
     var totalRows = 6;
     var currentRows = 0;
@@ -117,11 +118,25 @@ var calendar = function calendar() {
       currentRows++;
     }
   };
-  populateCalendarBody();
+  populateCalendarBody(currentYear, currentMonth);
   var calendar = document.getElementById('calendar');
-  // console.log(calendar);
-  calendar.addEventListener('arrowClick', function () {
-    console.log('arrow clicked calllllll!');
+  var currentMonthIndex = currentMonth.valueOf();
+  var currentYearIndex = currentYear.valueOf();
+  calendar.addEventListener('monthChange', function (event) {
+    console.log('calendar month change event', event);
+    //change the current month and the current year (maybe)
+    var changeDirection = event.detail.changeDirection;
+    //if changeDirection equals 'left' go back one month
+    if (changeDirection === 'left') {
+      currentMonthIndex = currentMonthIndex - 1;
+      // console.log('left');
+      populateCalendarBody(currentYearIndex, currentMonthIndex);
+      //if changeDirection equals 'right' go forward one month
+    } else if (changeDirection === 'right') {
+      currentMonthIndex = currentMonthIndex + 1;
+      // console.log('right');
+      populateCalendarBody(currentYearIndex, currentMonthIndex);
+    }
   }, true);
 };
 
@@ -169,7 +184,9 @@ var titleCarouselWrapper = function titleCarouselWrapper() {
   var arrowClick = function arrowClick(direction) {
     return new CustomEvent('arrowClick', {
       bubbles: true,
-      detail: { arrowDirection: direction }
+      detail: {
+        arrowDirection: direction
+      }
     });
   };
 

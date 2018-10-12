@@ -28,17 +28,17 @@ let calendar = () => {
       let previousMonthArr = [];
       let ld = lastDay(y, p);
       let i = 0;
-      while(i < daysOfTheWeek.length){
+      while (i < daysOfTheWeek.length) {
         previousMonthArr.push(ld);
         ld--;
         i++;
       }
       return previousMonthArr;
     }
-    if(previousMonth < 1){
+    if (previousMonth < 1) {
       previousMonth = 12;
-      return daysInPreviousMonth(year-1, previousMonth);
-    }else{
+      return daysInPreviousMonth(year - 1, previousMonth);
+    } else {
       return daysInPreviousMonth(year, previousMonth);
     }
   }
@@ -47,7 +47,7 @@ let calendar = () => {
 
   const calendarHead = document.getElementById('calendar-head');
   const populateCalendarHead = () => {
-    for(let i = 0; i<daysOfTheWeek.length; i++){
+    for (let i = 0; i < daysOfTheWeek.length; i++) {
       let day = document.createElement('p');
       day.innerHTML = daysOfTheWeek[i];
       calendarHead.appendChild(day);
@@ -58,32 +58,33 @@ let calendar = () => {
   // let titleIndex = Number(titleCarousel.getAttribute('title-starting-index'));
 
   const calendarBody = document.getElementById('calendar-body');
-  const populateCalendarBody = () => {
-    const currentDaysInMonth = lastDay(2018, 9);
-    const firstDayOfMonth = firstDay(2018, 9);
-    const lastMonthArr = lastMonth(currentYear, currentMonth, firstDayOfMonth);
+  const populateCalendarBody = (selectedYear, selectedMonth) => {
+    calendarBody.innerHTML = "";
+    const currentDaysInMonth = lastDay(selectedYear, selectedMonth);
+    const firstDayOfMonth = firstDay(selectedYear, selectedMonth);
+    const lastMonthArr = lastMonth(selectedYear, selectedMonth, firstDayOfMonth);
     const daysInRow = 7;
     const totalRows = 6;
     let currentRows = 0;
     let currentDayOfMonthIndex = 1; //current day of current month (e.g. september)
     let currentCalendarDayIndex = 0; //current index of days on calendar (i.e. daysInRow * totalRows)
     let lastDaysIndex = 1;
-    let lmaIndex = firstDayOfMonth-1;
+    let lmaIndex = firstDayOfMonth - 1;
 
 
 
-    while(currentRows < totalRows){
+    while (currentRows < totalRows) {
       const calendarRow = document.createElement('div');
-      for(let i = 0; i<daysInRow; i++){
+      for (let i = 0; i < daysInRow; i++) {
         const day = document.createElement('p');
-        if(currentCalendarDayIndex < firstDayOfMonth){
+        if (currentCalendarDayIndex < firstDayOfMonth) {
           day.innerHTML = lastMonthArr[lmaIndex];
           day.classList.add('grayedOut');
           lmaIndex--;
-        }else if(currentCalendarDayIndex>=firstDayOfMonth && currentDayOfMonthIndex <= currentDaysInMonth){
+        } else if (currentCalendarDayIndex >= firstDayOfMonth && currentDayOfMonthIndex <= currentDaysInMonth) {
           day.innerHTML = currentDayOfMonthIndex;
           currentDayOfMonthIndex++;
-        }else{
+        } else {
           day.innerHTML = lastDaysIndex;
           day.classList.add('grayedOut');
           lastDaysIndex++;
@@ -92,16 +93,30 @@ let calendar = () => {
         calendarRow.appendChild(day);
       }
       calendarBody
-      .appendChild(calendarRow)
-      .className = "calendar-row";
+        .appendChild(calendarRow)
+        .className = "calendar-row";
       currentRows++;
     }
   }
-  populateCalendarBody();
+  populateCalendarBody(currentYear, currentMonth);
   const calendar = document.getElementById('calendar');
-  // console.log(calendar);
-  calendar.addEventListener('arrowClick', function(){
-    console.log('arrow clicked calllllll!');
+  let currentMonthIndex = currentMonth.valueOf();
+  let currentYearIndex = currentYear.valueOf();
+  calendar.addEventListener('monthChange', function(event) {
+    console.log('calendar month change event', event);
+    //change the current month and the current year (maybe)
+    const changeDirection = event.detail.changeDirection;
+    //if changeDirection equals 'left' go back one month
+    if (changeDirection === 'left') {
+      currentMonthIndex = currentMonthIndex - 1;
+      // console.log('left');
+      populateCalendarBody(currentYearIndex, currentMonthIndex);
+      //if changeDirection equals 'right' go forward one month
+    } else if (changeDirection === 'right') {
+      currentMonthIndex = currentMonthIndex + 1;
+      // console.log('right');
+      populateCalendarBody(currentYearIndex, currentMonthIndex);
+    }
   }, true);
 };
 
